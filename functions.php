@@ -535,6 +535,10 @@ $AdControl2Url->setAttribute('class', 'bearui_content bearui_module');
     $Top->setAttribute('class', 'bearui_content bearui_other');
     $form->addInput($Top->multiMode());
     
+    $Mournmode = new Typecho_Widget_Helper_Form_Element_Select('Mournmode', array('1' => '是',  '2' => '否'), '2', '是否开启哀悼模式', '若开启哀悼模式，则网站全部显示灰色。');
+    $Mournmode->setAttribute('class', 'bearui_content bearui_other');
+    $form->addInput($Mournmode->multiMode());
+    
     //评论设置
     $Entermaxlength = new Typecho_Widget_Helper_Form_Element_Select('Entermaxlength', array('1' => '是',  '2' => '否'), '2', '是否开启评论字数限制', '若开启评论字数限制，则访客在评论时到达所限定字数即无法再输入');
     $Entermaxlength->setAttribute('class', 'bearui_content bearui_comment');
@@ -773,12 +777,17 @@ function themeFields(Typecho_Widget_Helper_Layout $layout)
 function imgravatarq($email)
 {
     $options = Helper::options();
-    if ($email) {
-        if (strpos($email, "@qq.com") !== false) {
-            $email = str_replace('@qq.com', '', $email);
-            if(is_numeric($email)){
-            echo "//q1.qlogo.cn/g?b=qq&nk=" . $email . "&";
-            }else{
+    
+$b=str_replace('@qq.com','',$email);
+    if(stristr($email,'@qq.com')&&is_numeric($b)&&strlen($b)<11&&strlen($b)>4){
+        $nk = 'https://s.p.qq.com/pub/get_face?img_type=3&uin='.$b;
+        $c = get_headers($nk, true);
+        $d = $c['Location'];
+        $q = json_encode($d);
+        $k = explode("&k=",$q)[1];
+        echo 'https://q.qlogo.cn/g?b=qq&k='.$k.'&s=100';
+    }else{
+            
                 $mmail = $email.'@qq.com';
                 $email = md5($mmail);
                 if($options->Gravatar == '1'){
@@ -800,13 +809,6 @@ function imgravatarq($email)
                 echo "//$options->GravatarUrl" . $email . "?";
             }
             }
-        } else {
-            $email = md5($email);
-            echo "//dn-qiniu-avatar.qbox.me/avatar/" . $email . "?";
-        }
-    } else {
-        echo "//dn-qiniu-avatar.qbox.me/avatar/null?";
-    }
 }
 
 

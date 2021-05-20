@@ -55,24 +55,28 @@ $sql = $db->select()->from('table.comments')
     ->limit(1);
 $result = $db->fetchAll($sql);
 if($this->user->hasLogin() || $result) {
+    $this->content = preg_replace("/\[bs-hide\](.*?)\[\/bs-hide\]/sm",'<div class="ui floating message">$1</div>',$this->content);
      if ($this->options->Lightbox == '1'){
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
     $replacement = '<a href="$1" class="bearsimple-image-link" data-lightbox="bearsimple-set" data-title="'.$this->title.'"><img class="bearsimple-image" src="$1" alt="'.$this->title.'" title="点击放大图片"></a>';
     $content = preg_replace($pattern, $replacement, $this->content);
     }
-    $content = preg_replace("/\[bs-hide\](.*?)\[\/bs-hide\]/sm",'<div class="ui floating message">$1</div>',$this->content);
+
+
     
 }
 
 else{
+     $this->content = preg_replace("/\[bs-hide\](.*?)\[\/bs-hide\]/sm",'<div class="ui floating message"><i class="thumbtack icon"></i>此处内容需要评论回复后方可阅读。</div>',$this->content);
         if ($this->options->Lightbox == '1'){
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
     $replacement = '<a href="$1" class="bearsimple-image-link" data-lightbox="bearsimple-set" data-title="'.$this->title.'"><img class="bearsimple-image" src="$1" alt="'.$this->title.'" title="点击放大图片"></a>';
     $content = preg_replace($pattern, $replacement, $this->content);
     }
-    $content = preg_replace("/\[bs-hide\](.*?)\[\/bs-hide\]/sm",'<div class="ui floating message"><i class="thumbtack icon"></i>此处内容需要评论回复后方可阅读。</div>',$this->content);
+   
+   
 }
-    echo $content;
+    echo $content; 
 ?>
 <?php endif;?></p></div>
 

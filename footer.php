@@ -36,14 +36,10 @@ setInternet(function() {
 </script>
 <?php endif; ?>
 <script src="/usr/themes/bearsimple/assets/js/layer/layer.js"></script>
-
-
-
     <script>
 		$(function(){
         $('.ui.dropdown').dropdown();
     });
-    
 //赋予div href特性
     clickToHref();
 function clickToHref() {

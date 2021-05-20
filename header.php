@@ -4,7 +4,9 @@
 <?php include 'modules/cc-firewall.php'; ?>
 <?php endif; ?>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<?php if ($this->options->Mournmode == "1"): ?>
+<html lang="zh-CN" class="gray">
+    <?php endif; ?>
     <head>
         <meta name="referrer" content="always">
  <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -59,7 +61,20 @@
 <link href="/usr/themes/bearsimple/assets/css/top.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="/usr/themes/bearsimple/assets/js/top.js"></script>
 <?php endif; ?>
+<?php if ($this->options->Mournmode == "1"): ?>
+<style>
 
+.gray {
+  filter: grayscale(1);
+}
+
+.gray {
+  -webkit-filter: grayscale(1); /* Old Chrome、Old Safari、Old Opera*/
+  filter: grayscale(1); /* 现代浏览器标准 */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); /* IE */
+}
+</style>
+<?php endif; ?>
 <?php $this->header(); ?>
  </head>
  <body <?php if($this->options->CopyProtect == '1') :?>oncontextmenu='return false' ondragstart='return false' onselectstart ='return false' onselect='document.selection.empty()' oncopy='document.selection.empty()' onbeforecopy='return false'<?php endif; ?>>
@@ -75,6 +90,7 @@
   
         	    <p class="description"><?php $this->options->description() ?></p>
         	    <?php if ($this->options->Translate == "1"): ?><a id="translateLink" class="ui mini button">繁体</a><?php endif; ?></div>
+   
     <div id="nav-menu"><a<?php if($this->is('index')): ?> class="current"<?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
    <a>
   <div class="ui dropdown">
