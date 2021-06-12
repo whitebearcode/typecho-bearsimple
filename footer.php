@@ -3,6 +3,7 @@
     </div>
 </div>
 
+
 <footer id="footer" role="contentinfo">
    
  <?php $this->options->CustomizationFooterCode(); ?><br>
@@ -11,7 +12,15 @@
      <?php if ($this->options->PoliceBa): ?><img src="/usr/themes/bearsimple/assets/image/police.png">公安备案号:<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<?php $this->options->PoliceBa(); ?>"><?php $this->options->PoliceBa(); ?></a><?php endif; ?><?php if ($this->options->IcpBa && $this->options->PoliceBa): ?>  | <?php endif; ?><?php if ($this->options->IcpBa): ?><a href="http://beian.miit.gov.cn/publish/query/indexFirst.action"><?php $this->options->IcpBa(); ?></a><?php endif; ?>
 </footer>
 <?php if($this->options->Top == '1') :?>
-<a href="#" onclick="gotoTop();return false;" class="totop"></a><?php endif; ?>
+<div style="display:none;" id="rocket-to-top">
+
+	<div style="opacity:0;display:block;" class="level-2"></div>
+
+	<div class="level-3"></div>
+
+</div>
+
+<?php endif; ?>
 
 
 <?php if($this->options->Compress == '1') :?><nocompress><?php endif; ?>
@@ -38,8 +47,15 @@ setInternet(function() {
 <script src="/usr/themes/bearsimple/assets/js/layer/layer.js"></script>
     <script>
 		$(function(){
-        $('.ui.dropdown').dropdown();
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+            });
     });
+    $(function(){
+    $('.special.cards .image').dimmer({
+  on: 'hover'
+});
+});
 //赋予div href特性
     clickToHref();
 function clickToHref() {
@@ -61,9 +77,12 @@ function clickToHref() {
 
 
 <script src="/usr/themes/bearsimple/assets/js/jquery.min.js"></script>
+
 <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 <script src="/usr/themes/bearsimple/assets/share/js/jquery.share.min.js"></script>
+
+
 
 
 <script>
@@ -163,9 +182,16 @@ $(document).pjax('li', '#pjax-container')
 $(document).on('pjax:complete', function () {
 //下拉导航 pjax
 $(function(){
-        $('.ui.dropdown').dropdown();
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+            });
+        
     });
-    
+    $(function(){
+    $('.special.cards .image').dimmer({
+  on: 'hover'
+});
+});
 //赋予div href特性
     clickToHref();
 function clickToHref() {
@@ -183,6 +209,7 @@ function clickToHref() {
         });
     })
 }
+
 <?php if($this->options->Translate == '1') :?>
 
 //切换语言 pjax

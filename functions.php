@@ -4,6 +4,55 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**防止你们看到报错.jpg**/
 error_reporting(0);
 
+// 简介图文获取图片
+function thumb($obj) {
+    //获取附件首张图片
+	$attach = $obj->attachments(1)->attachment;
+	//获取文章首张图片
+	preg_match_all("/\<img.*?src\=\"(.*?)\"[^>]*>/i", $obj->content, $thumbUrl);
+	$img_src = $thumbUrl[1][0];
+	// 获取自定义随机图片
+	$options = Typecho_Widget::widget('Widget_Options');
+	$thumbs = explode("|",$options->Article_forma_pic);
+	//--------------->
+	
+	if(isset($attach->isImage) && $attach->isImage == 1){
+		$thumb = $attach->url;
+	}else if($img_src){
+		$thumb = $img_src;
+	}else if($options->thumbs && count($thumbs)>0){
+		$thumb = $thumbs[rand(0,count($thumbs)-1)];
+	}
+	else{
+	    $thumb = 'null';
+	}
+	return $thumb;
+}
+
+// 图底文字获取图片
+function thumb2($obj) {
+    //获取附件首张图片
+	$attach = $obj->attachments(1)->attachment;
+	//获取文章首张图片
+	preg_match_all("/\<img.*?src\=\"(.*?)\"[^>]*>/i", $obj->content, $thumbUrl);
+	$img_src = $thumbUrl[1][0];
+	// 获取自定义随机图片
+	$options = Typecho_Widget::widget('Widget_Options');
+	$thumbs = explode("|",$options->Article_forma_pic2);
+	//--------------->
+	
+	if(isset($attach->isImage) && $attach->isImage == 1){
+		$thumb = $attach->url;
+	}else if($img_src){
+		$thumb = $img_src;
+	}else if($options->thumbs && count($thumbs)>0){
+		$thumb = $thumbs[rand(0,count($thumbs)-1)];
+	}
+	else{
+	    $thumb = 'null';
+	}
+	return $thumb;
+}
 
 /**解析表情**/
 $emo = false;
@@ -142,15 +191,15 @@ function themeConfig($form)
     <div class="bearui_config">
         <div>
             <div class="bearui_config__aside">
-                <div class="logo">BearSimple V1.0</div>
+                <div class="logo"><div class="ui blue big label">BearSimple V1.2</div></div>
                 <ul class="tabs">
                     <li class="item" data-current="bearui_notice"><i class="assistive listening systems icon"></i> 使用说明</li>
                     <li class="item" data-current="bearui_global"><i class="american sign language interpreting icon"></i> 基础设置</li>
-                    <li class="item" data-current="bearui_index"><i class="industry icon"></i> 首页设置</li>
+                    <li class="item" data-current="bearui_index"><i class="industry icon"></i> 首页及分类</li>
 <li class="item" data-current="bearui_header"><i class="heading icon"></i> 顶部设置</li>
                     <li class="item" data-current="bearui_footer"><i class="football ball icon"></i> 底部设置</li>
                     <li class="item" data-current="bearui_friend"><i class="superscript icon"></i> 友链设置</li>
-                    <li class="item" data-current="bearui_diy"><i class="newspaper outline icon"></i> DIY设置[Beta]</li>
+                    <li class="item" data-current="bearui_diy"><i class="newspaper outline icon"></i> DIY设置</li>
                     <li class="item" data-current="bearui_load"><i class="compress icon"></i> 加载设置</li>
                     <li class="item" data-current="bearui_sec"><i class="braille icon"></i> 行为验证</li>
                     <li class="item" data-current="bearui_reward"><i class="universal access icon"></i> 打赏设置</li>
@@ -188,7 +237,7 @@ function themeConfig($form)
     <i class="github icon"></i> 当前版本/最新版本
   </div>
   <a class="ui basic black left pointing label" href="https://github.com/whitebearcode/typecho-bearsimple">
-    V1.0/V<?php GetVersion();?> [Github]
+    V1.2/V<?php GetVersion();?> [Github]
         </a>
 </div></center>
 <?php $db = Typecho_Db::get();
@@ -266,7 +315,7 @@ echo '<br><center><form class="protected" action="?bearsimple" method="post">
     $description->setAttribute('class', 'bearui_content bearui_global');
     $form->addInput($description);
     
-    $Gravatar = new Typecho_Widget_Helper_Form_Element_Select('Gravatar', array('1' => 'Gravatar官方源',  '3' => 'V2EX*Gravatar镜像源','4' => 'LOLI.NET*Gravatar镜像源','5' => '极客族*Gravatar镜像源','6' => '七牛*Gravatar镜像源','7' => '自定义Gravatar镜像源'), '4', 'Gravatar源选择', '因Gravatar官方在中国大陆地区被Q，导致在中国大陆访问使用Gravatar的站点时头像不显示,这里支持您自主选择合适的源,若为自定义，举例:cdn.v2ex.com/gravatar/<br>本功能适配QQ,当填写的邮箱为QQ邮箱时则显示QQ头像');
+    $Gravatar = new Typecho_Widget_Helper_Form_Element_Select('Gravatar', array('1' => 'Gravatar官方源','2' => 'LOLI.TOP*Gravatar镜像源', '3' => 'V2EX*Gravatar镜像源','4' => 'LOLI.NET*Gravatar镜像源','5' => '极客族*Gravatar镜像源','6' => '七牛*Gravatar镜像源','7' => '自定义Gravatar镜像源'), '4', 'Gravatar源选择', '因Gravatar官方在中国大陆地区被Q，导致在中国大陆访问使用Gravatar的站点时头像不显示,这里支持您自主选择合适的源,若为自定义，举例:cdn.v2ex.com/gravatar/<br>本功能适配QQ,当填写的邮箱为QQ邮箱时则显示QQ头像');
     $Gravatar->setAttribute('class', 'bearui_content bearui_global');
     $form->addInput($Gravatar->multiMode());
     if($options->Gravatar == '7'){
@@ -274,6 +323,92 @@ echo '<br><center><form class="protected" action="?bearsimple" method="post">
     $GravatarUrl->setAttribute('class', 'bearui_content bearui_global');
     $form->addInput($GravatarUrl);
     }
+    $Animate = new Typecho_Widget_Helper_Form_Element_Select(
+        'Animate',
+        array(
+            'close' => '关闭',
+            'bounce' => 'bounce',
+            'flash' => 'flash',
+            'pulse' => 'pulse',
+            'rubberBand' => 'rubberBand',
+            'headShake' => 'headShake',
+            'swing' => 'swing',
+            'tada' => 'tada',
+            'wobble' => 'wobble',
+            'jello' => 'jello',
+            'heartBeat' => 'heartBeat',
+            'bounceIn' => 'bounceIn',
+            'bounceInDown' => 'bounceInDown',
+            'bounceInLeft' => 'bounceInLeft',
+            'bounceInRight' => 'bounceInRight',
+            'bounceInUp' => 'bounceInUp',
+            'bounceOut' => 'bounceOut',
+            'bounceOutDown' => 'bounceOutDown',
+            'bounceOutLeft' => 'bounceOutLeft',
+            'bounceOutRight' => 'bounceOutRight',
+            'bounceOutUp' => 'bounceOutUp',
+            'fadeIn' => 'fadeIn',
+            'fadeInDown' => 'fadeInDown',
+            'fadeInDownBig' => 'fadeInDownBig',
+            'fadeInLeft' => 'fadeInLeft',
+            'fadeInLeftBig' => 'fadeInLeftBig',
+            'fadeInRight' => 'fadeInRight',
+            'fadeInRightBig' => 'fadeInRightBig',
+            'fadeInUp' => 'fadeInUp',
+            'fadeInUpBig' => 'fadeInUpBig',
+            'fadeOut' => 'fadeOut',
+            'fadeOutDown' => 'fadeOutDown',
+            'fadeOutDownBig' => 'fadeOutDownBig',
+            'fadeOutLeft' => 'fadeOutLeft',
+            'fadeOutLeftBig' => 'fadeOutLeftBig',
+            'fadeOutRight' => 'fadeOutRight',
+            'fadeOutRightBig' => 'fadeOutRightBig',
+            'fadeOutUp' => 'fadeOutUp',
+            'fadeOutUpBig' => 'fadeOutUpBig',
+            'flip' => 'flip',
+            'flipInX' => 'flipInX',
+            'flipInY' => 'flipInY',
+            'flipOutX' => 'flipOutX',
+            'flipOutY' => 'flipOutY',
+            'rotateIn' => 'rotateIn',
+            'rotateInDownLeft' => 'rotateInDownLeft',
+            'rotateInDownRight' => 'rotateInDownRight',
+            'rotateInUpLeft' => 'rotateInUpLeft',
+            'rotateInUpRight' => 'rotateInUpRight',
+            'rotateOut' => 'rotateOut',
+            'rotateOutDownLeft' => 'rotateOutDownLeft',
+            'rotateOutDownRight' => 'rotateOutDownRight',
+            'rotateOutUpLeft' => 'rotateOutUpLeft',
+            'rotateOutUpRight' => 'rotateOutUpRight',
+            'hinge' => 'hinge',
+            'jackInTheBox' => 'jackInTheBox',
+            'rollIn' => 'rollIn',
+            'rollOut' => 'rollOut',
+            'zoomIn' => 'zoomIn',
+            'zoomInDown' => 'zoomInDown',
+            'zoomInLeft' => 'zoomInLeft',
+            'zoomInRight' => 'zoomInRight',
+            'zoomInUp' => 'zoomInUp',
+            'zoomOut' => 'zoomOut',
+            'zoomOutDown' => 'zoomOutDown',
+            'zoomOutLeft' => 'zoomOutLeft',
+            'zoomOutRight' => 'zoomOutRight',
+            'zoomOutUp' => 'zoomOutUp',
+            'slideInDown' => 'slideInDown',
+            'slideInLeft' => 'slideInLeft',
+            'slideInRight' => 'slideInRight',
+            'slideInUp' => 'slideInUp',
+            'slideOutDown' => 'slideOutDown',
+            'slideOutLeft' => 'slideOutLeft',
+            'slideOutRight' => 'slideOutRight',
+            'slideOutUp' => 'slideOutUp',
+        ),
+        'off',
+        '选择一款显示动画',
+        '开启后，首页等位置都将显示此动画'
+    );
+    $Animate->setAttribute('class', 'bearui_content bearui_global');
+    $form->addInput($Animate->multiMode());
      //友链设置
       $FriendLinkChoose = new Typecho_Widget_Helper_Form_Element_Select('FriendLinkChoose', array('1' => '开启右侧友情链接',  '2' => '关闭右侧友情链接'), '1', '<i class="linkify icon"></i>右侧友情链接栏是否开启', '若选择开启，则站点右侧增加友情链接栏');
     $FriendLinkChoose->setAttribute('class', 'bearui_content bearui_friend');
@@ -284,7 +419,7 @@ echo '<br><center><form class="protected" action="?bearsimple" method="post">
     $form->addInput($FriendLink);
     }
     //首页设置
-$Sticky = new Typecho_Widget_Helper_Form_Element_Select('Sticky', array('1' => '开启文章置顶',  '2' => '关闭文章置顶'), '2', '<i class="linkify icon"></i>是否开启文章置顶', '若选择开启，则可设置站点置顶文章');
+$Sticky = new Typecho_Widget_Helper_Form_Element_Select('Sticky', array('1' => '开启文章置顶',  '2' => '关闭文章置顶'), '2', '<i class="linkify icon"></i>是否开启文章置顶', '目前暂时仅首页有效，若选择开启，则可设置站点置顶文章');
     $Sticky->setAttribute('class', 'bearui_content bearui_index');
     $form->addInput($Sticky->multiMode());
 
@@ -302,7 +437,45 @@ $sticky_cids->setAttribute('class', 'bearui_content bearui_index');
 $sticky_html->setAttribute('class', 'bearui_content bearui_index');
         $form->addInput($sticky_html);
 	}
-	
+$Article_forma = new Typecho_Widget_Helper_Form_Element_Select('Article_forma', array('1' => '简洁图文',  '2' => '纯文字','3' => '图底文字'), '2', '选择首页以及分类输出文章的展现样式', '若选择图文或图底文字，则当存在图片时展现图文样式，优先级：附件首图->文章首图->自定义随机图片，无图片时不显示;');
+    $Article_forma->setAttribute('class', 'bearui_content bearui_index');
+    $form->addInput($Article_forma->multiMode());
+    
+    if($options->Article_forma == '1'){
+      $Article_forma_pic = new Typecho_Widget_Helper_Form_Element_Textarea(
+          'Article_forma_pic', NULL, "",
+          '简介图文使用-自定义随机图片', '自定义图片链接可固定一张，多张随机使用|分割<br>例如:https://www.xxx.com/xxx.png|https://www.xxx.com/xxxx.png');
+        $Article_forma_pic->input->setAttribute('rows', '7')->setAttribute('cols', '80');
+$Article_forma_pic->setAttribute('class', 'bearui_content bearui_index');
+        $form->addInput($Article_forma_pic);   
+        
+    $Article_time = new Typecho_Widget_Helper_Form_Element_Select('Article_time', array('1' => '显示',  '2' => '不显示'), '2', '<i class="linkify icon"></i>是否显示文章发布时间', '若选择显示，则前台输出文章时显示文章发布时间');
+    $Article_time->setAttribute('class', 'bearui_content bearui_index');
+    $form->addInput($Article_time->multiMode());
+    }
+    if($options->Article_forma == '3'){
+      $Article_forma_pic2 = new Typecho_Widget_Helper_Form_Element_Textarea(
+          'Article_forma_pic2', NULL, "",
+          '图底文字使用-自定义随机图片', '自定义图片链接可固定一张，多张随机使用|分割<br>例如:https://www.xxx.com/xxx.png|https://www.xxx.com/xxxx.png');
+        $Article_forma_pic2->input->setAttribute('rows', '7')->setAttribute('cols', '80');
+$Article_forma_pic2->setAttribute('class', 'bearui_content bearui_index');
+        $form->addInput($Article_forma_pic2);  
+        
+    $Article_time2 = new Typecho_Widget_Helper_Form_Element_Select('Article_time2', array('1' => '显示',  '2' => '不显示'), '2', '<i class="linkify icon"></i>是否显示文章发布时间', '若选择显示，则前台输出文章时显示文章发布时间');
+    $Article_time2->setAttribute('class', 'bearui_content bearui_index');
+    $form->addInput($Article_time2->multiMode());
+        
+    }
+	$articletitlenum = new Typecho_Widget_Helper_Form_Element_Text(
+          'articletitlenum', NULL, '',
+          '首页输出文章的标题字数', '填写数字即可');
+$articletitlenum->setAttribute('class', 'bearui_content bearui_index');
+        $form->addInput($articletitlenum);
+        $articleexcerptnum = new Typecho_Widget_Helper_Form_Element_Text(
+          'articleexcerptnum', NULL, '',
+          '首页输出文章的摘要字数', '填写数字即可,该项仅应用于自动截取摘要,当文章内存在手动填写摘要时该项无效');
+$articleexcerptnum->setAttribute('class', 'bearui_content bearui_index');
+        $form->addInput($articleexcerptnum);
 	//打赏设置
 	$RewardOpen = new Typecho_Widget_Helper_Form_Element_Select('RewardOpen', array('1' => '开启打赏功能',  '2' => '关闭打赏功能'), '2', '<i class="money bill alternate outline icon"></i> 是否开启打赏功能', '若选择开启，则文章底部都将出现打赏按钮');
     $RewardOpen->setAttribute('class', 'bearui_content bearui_reward');
@@ -486,6 +659,14 @@ $AdControl2Url->setAttribute('class', 'bearui_content bearui_module');
     $AuthorAvatar->setAttribute('class', 'bearui_content bearui_author');
     $form->addInput($AuthorAvatar);
     
+    $AuthorAvatarClickText = new Typecho_Widget_Helper_Form_Element_Text('AuthorAvatarClickText', null, '', '博主头像图片动作文字', '当鼠标移至头像处时会存在hover覆盖效果,目前预设了按钮，您可以自定义按钮文字及链接');
+    $AuthorAvatarClickText->setAttribute('class', 'bearui_content bearui_author');
+    $form->addInput($AuthorAvatarClickText);
+    
+    $AuthorAvatarClickLink = new Typecho_Widget_Helper_Form_Element_Text('AuthorAvatarClickLink', null, '', '博主头像图片动作链接', '当鼠标移至头像处时会存在hover覆盖效果,目前预设了按钮，您可以自定义按钮文字及链接');
+    $AuthorAvatarClickLink->setAttribute('class', 'bearui_content bearui_author');
+    $form->addInput($AuthorAvatarClickLink);
+    
     $AuthorName = new Typecho_Widget_Helper_Form_Element_Text('AuthorName', null, '', '博主昵称', '请填写博主昵称,若为空则不显示');
     $AuthorName->setAttribute('class', 'bearui_content bearui_author');
     $form->addInput($AuthorName);
@@ -555,6 +736,7 @@ $AdControl2Url->setAttribute('class', 'bearui_content bearui_module');
     $UploadPassword= new Typecho_Widget_Helper_Form_Element_Text('UploadPassword', null, '', '上传密钥', '请填入上传密钥,建议复杂点,在DIY面板在线上传时为保证安全，需要该密钥进行验证。');
     $UploadPassword->setAttribute('class', 'bearui_content bearui_diy');
     $form->addInput($UploadPassword);
+    
     $base64encrypt = base64_encode($options->UploadPassword);
     if ($options->Diy == '1'&& !empty($options->UploadPassword)){
         $file = dirname(__FILE__).'/upload/Upload.Key';
@@ -572,10 +754,24 @@ $AdControl2Url->setAttribute('class', 'bearui_content bearui_module');
 					<input type="hidden" id='token' name="token" value="{$base64encrypt}" placeholder="Key" autocomplete="off" class="layui-input" disabled>
 				
 				</div>
-				<br><br>
+
+		
+<div class="ui form info">
+  <div class="field">
+    <label>图片圆角值</label>
+    <input type="number" placeholder="请输入图片圆角值" name="bearsimple_picradius" value="{$options->picradius}">
+  </div>
+  <div class="ui info message">
+    <div class="header">输入数字即可，输入图片圆角值后前台图片输出时将显示圆角，更加美观，本项为空时默认不启用.</div>
+   
+  </div>
+  
+</div>		<br><br>
 			<div class="layui-form-item">
 
-		<label class="layui-form-label">图片<br>上传</label>
+	<div class="field">
+    <label>图片上传</label>
+    </div><br>
 <div class="layui-upload">
   <button type="button" class="layui-btn layui-btn-normal" id="uploadimages">选择多张图片</button> 
   <div class="layui-upload-list">
@@ -747,13 +943,8 @@ HTML;
 	$layout = new Typecho_Widget_Helper_Layout();
 	$layout->html(_t($Html));
 	$layout->setAttribute('class', 'bearui_content bearui_diy');
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('headerColor'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('headerTextColor'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('footerColor'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('footerTextColor'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('backgroundColor'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('backgroundImg'));
-	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('FooterbackgroundImg'));
+	$form->addInput(new Typecho_Widget_Helper_Form_Element_Hidden('picradius'));
+
 	$form->addItem($layout);
 }
 }
@@ -792,6 +983,9 @@ $b=str_replace('@qq.com','',$email);
                 $email = md5($mmail);
                 if($options->Gravatar == '1'){
                 echo "//cn.gravatar.com/gravatar/" . $email . "?";
+            }
+            else if($options->Gravatar == '2'){
+                echo "//gravatar.loli.top/avatar/" . $email . "?";
             }
             else if($options->Gravatar == '3'){
                 echo "//cdn.v2ex.com/gravatar/" . $email . "?";

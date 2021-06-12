@@ -3,7 +3,7 @@
 QQ交流群:561848356<br>
 
 <a href="https://www.coder-bear.com/typecho/bearsimple.html">使用说明</a>
-<a href="https://github.com/whitebearcode/typecho-bearwind/releases/download/1.0/Bearsimple_v1.0.zip">最新版本[v1.0]下载</a>
+<a href="https://github.com/whitebearcode/typecho-bearwind/releases/download/1.0/Bearsimple_v1.2.zip">最新版本[v1.2]下载</a>
 <a href = "https://support.qq.com/products/314782">问题反馈</a>
 <a href = "http://bearsimple.typecho.bearlab.in">演示站</a>
 <a href = "https://www.coder-bear.com/">我的博客</a><br>

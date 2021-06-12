@@ -25,25 +25,108 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
   </div>
 </h2></center>
         <?php if ($this->have()): ?>
-    	<?php while($this->next()): ?>
-            <a href="<?php $this->permalink() ?>">
-<div class="ui segment" style="border-radius:20px">
+ 
+<?php if($this->options->Article_forma == "1"): ?>		
+   <?php while($this->next()): ?>
+<div class="ui divided items segment" style="border-radius:10px">
+  <div class="item">
+
+<?php if(thumb($this) !== "null"): ?>
+  <div class="rounded image">
+      <img src="<?php echo thumb($this); ?>" alt="<?php $this->title() ?>">
+    </div>
+    <?php endif; ?>
+    <div class="content">
+      <h2 class="post-title"><a href="<?php $this->permalink() ?>" class="header" style="margin-top:5px"><?php $this->sticky() ?><?php $this->title($this->options->articletitlenum, '...') ?></a></h2>
+      <div class="meta">
+        <span class="cinema"><?php if($this->fields->excerpt == null): ?>
+			<?php $this->excerpt($this->options->articleexcerptnum, '...'); ?>
+		<?php endif; ?>
+			<?php if($this->fields->excerpt !== null): ?>
+			<?php $this->fields->excerpt(); ?>
+			<?php endif; ?></span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        		<?php if($this->options->Article_time == "1"): ?><div class="ui label"><i class="time icon"></i> <?php $this->date(); ?></div><?php endif; ?>
+
+   
+        <p class="readmore"><a href="<?php $this->permalink() ?>">阅读全文</a></p>
+      </div>
+    </div>
+  </div></div>
+ 	<?php endwhile; ?>
+ 	<?php endif; ?>
+<?php if($this->options->Article_forma == "2"): ?>
+	<?php while($this->next()): ?>
+
+
+<div class="ui segment" style="border-radius:5px;">
+
+        
+    	<a href="<?php $this->permalink() ?>">
         <div class="post">
-			<h1 class="post-title"><a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->sticky() ?><?php $this->title(15, '...') ?></a></h1>
+			<h1 class="post-title"><a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->sticky() ?><?php $this->title($this->options->articletitlenum, '...') ?></a></h1>
+	
 			<div class="post-meta">
 			<time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
 			</div>
 			<div class="post-content">
-			    <?php if($this->fields->excerpt == null): ?>
-			<?php $this->excerpt(100, '...'); ?>
+				    <?php if($this->fields->excerpt == null): ?>
+			<?php $this->excerpt($this->options->articleexcerptnum, '...'); ?>
 		<?php endif; ?>
 			<?php if($this->fields->excerpt !== null): ?>
 			<?php $this->fields->excerpt(); ?>
 			<?php endif; ?>
-			</div><br><p class="readmore"><a href="<?php $this->permalink() ?>">阅读全文</a></p></div>
+			</div><br><p class="readmore" style="float:right;"><a href="<?php $this->permalink() ?>">阅读全文</a></p></div></a>
 		</div>
-			</a>
-    	<?php endwhile; ?>
+			
+	<?php endwhile; ?>
+<?php endif; ?>
+<?php if($this->options->Article_forma == "3"): ?>
+
+                    <div class="wrapper">
+		  <div class="cols">
+		               <?php while($this->next()): ?>
+					<div class="col">
+						<div class="container">
+						    <?php if(thumb2($this) !== "null"): ?>
+							<div class="front" style="background-image: url(<?php echo thumb2($this); ?>)">
+							    <?php else: ?>
+							    <div class="front" style="background-image: url(/usr/themes/bearsimple/assets/images/2.png)">
+							        <?php endif; ?>
+								<div class="inner">
+									<p><?php $this->sticky() ?><?php $this->title($this->options->articletitlenum, '...') ?> </p>
+	
+		              <span><?php if($this->fields->excerpt == null): ?>
+			<?php $this->excerpt($this->options->articleexcerptnum, '...'); ?>
+		<?php endif; ?>
+			<?php if($this->fields->excerpt !== null): ?>
+			<?php $this->fields->excerpt(); ?>
+			<?php endif; ?> </span>		
+			<?php if($this->options->Article_time == "3"): ?><div class="post-meta" style="padding-top:30px">
+  <div class="ui mini inverted statistic">
+    <div class="value">
+      <?php $this->date(); ?>
+    </div>
+    <div class="label">
+     发表时间
+    </div>
+  </div>
+			</div>
+			<?php endif; ?>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+				<?php endwhile; ?>
+				</div>
+		 </div>
+
+<?php endif; ?>
     	
         <?php else: ?>
             <article class="post">

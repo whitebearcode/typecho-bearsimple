@@ -1,8 +1,12 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
 ?>
 <?php $this->need('header.php'); ?>
+<?php if($this->options->Animate == "close" || $this->options->Animate == null): ?>
+ <div class="pure-g" id="layout">
+    <?php else: ?>
+  <div class="pure-g animate__animated animate__<?php $this->options->Animate() ?>" id="layout">
+        <?php endif; ?>
 
-<div class="pure-g" id="layout">
       <div class="pure-u-1 pure-u-md-3-4">
           <div class="content_container">
           <div class="post">
