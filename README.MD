@@ -2,7 +2,7 @@
 简洁大方的Typecho主题<br>
 QQ交流群:561848356<br>
 
-<a href="https://www.coder-bear.com/typecho/bearsimple.html">使用说明</a>
+<a href="https://www.coder-bear.com/Typecho/bearsimple.html">使用说明</a>
 <a href="https://github.com/whitebearcode/typecho-bearsimple/releases/download/v1.4.1/Bearsimple_v1.4.1.zip">最新版本[v1.4.1]下载</a>
 <a href = "https://support.qq.com/products/314782">问题反馈</a>
 <a href = "http://bearsimple.typecho.bearlab.in">演示站</a>
