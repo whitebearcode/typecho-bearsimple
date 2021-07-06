@@ -4,7 +4,7 @@
  * 
  * @package BearSimple 
  * @author WhiteBear
- * @version 1.4.5
+ * @version 1.4.6
  * @link https://www.coder-bear.com/
  */
 

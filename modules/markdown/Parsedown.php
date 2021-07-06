@@ -529,7 +529,7 @@ class Parsedown
 
     protected function blockList($Line, array $CurrentBlock = null)
     {
-        [$name, $pattern] = $Line['text'][0] <= '-' ? ['ul', '[*+-]'] : ['ol', '[0-9]{1,9}+[.\)]'];
+        //[$name, $pattern] = $Line['text'][0] <= '-' ? ['ul', '[*+-]'] : ['ol', '[0-9]{1,9}+[.\)]'];
 
         if (preg_match('/^(' . $pattern . '([ ]++|$))(.*+)/', $Line['text'], $matches)) {
             $contentIndent = strlen($matches[2]);

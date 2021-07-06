@@ -58,7 +58,7 @@ function themeConfig($form)
     <div class="bearui_config">
         <div>
             <div class="bearui_config__aside">
-                <div class="logo"><div class="ui blue big label">BearSimple V1.4.5</div></div>
+                <div class="logo"><div class="ui blue big label">BearSimple V1.4.6</div></div>
                 <ul class="tabs">
                     <li class="item" data-current="bearui_notice"><i class="assistive listening systems icon"></i> 使用说明</li>
                     <li class="item" data-current="bearui_global"><i class="american sign language interpreting icon"></i> 基础设置</li>
@@ -106,7 +106,7 @@ function themeConfig($form)
     <i class="github icon"></i> 当前版本/最新版本
   </div>
   <a class="ui basic black left pointing label" href="https://github.com/whitebearcode/typecho-bearsimple">
-    V1.4.5/V<?php GetVersion(); ?> [Github]
+    V1.4.6/V<?php GetVersion(); ?> [Github]
         </a>
 </div></center>
 <?php require_once('core/backup.php'); ?>

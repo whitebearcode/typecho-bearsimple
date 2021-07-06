@@ -9,6 +9,15 @@ class Prism_Plugin{
      *@return void
      */
     public static function headlink($cssUrl) {
+        
+        $options = Helper::options();
+    if($options->Assets == '1' || $options->Assets == null){
+        $dir = $options->themeUrl.'/';
+    }
+    else{
+        $dir = $options->Assets_Custom;
+    }
+    
         $style = Helper::options()->code_style;
         if(empty($style)){
             $style = 'coy.css';
@@ -16,7 +25,7 @@ class Prism_Plugin{
         else{
        $style = Helper::options()->code_style;
         }
-        $cssUrl = '/usr/themes/bearsimple/modules/codehightlight/static/styles/' . $style;
+        $cssUrl = $dir.'modules/codehightlight/static/styles/' . $style;
         echo '<link rel="stylesheet" type="text/css" href="' . $cssUrl . '" />';
     }
 
@@ -28,8 +37,16 @@ class Prism_Plugin{
      * @return unknown
      */
     public static function footlink($links) {
-         $jsUrl = '/usr/themes/bearsimple/modules/codehightlight/static/prism.js';
-        $jsUrl_clipboard = '/usr/themes/bearsimple/modules/codehightlight/static/clipboard.min.js';
+         $options = Helper::options();
+    if($options->Assets == '1' || $options->Assets == null){
+        $dir = $options->themeUrl.'/';
+    }
+    else{
+        $dir = $options->Assets_Custom;
+    }
+    
+         $jsUrl = $dir.'modules/codehightlight/static/prism.js';
+        $jsUrl_clipboard = $dir.'modules/codehightlight/static/clipboard.min.js';
         $showLineNumber = Helper::options()->showLineNumber;
         if ($showLineNumber) {
             echo <<<HTML
