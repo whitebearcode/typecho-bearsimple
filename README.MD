@@ -1,6 +1,7 @@
 # Typecho主题 - Bearsimple
 一款简洁大方的Typecho主题<br>
 QQ交流群:561848356<br>
+<a>若主题目录名为bearsimple-master，则需改为bearsimple，否则部分功能无法显示。</a><br>
 <a>特别声明:本主题仅适用于单纯的博客日志，请勿用于违法站点，在遵守国家法律法规的前提下合理使用，谢谢~</a><br>
 <a href="https://www.coder-bear.com/Typecho/bearsimple.html">使用说明</a>
 <a href="https://github.com/whitebearcode/typecho-bearsimple/releases/download/v1.5.6/Bearsimple_v1.5.6.zip">最新版本[v1.5.6]下载</a>
