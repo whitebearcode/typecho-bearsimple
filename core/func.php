@@ -135,7 +135,7 @@ if($str == 'HTTP/1.1 404 Not Found'){
             $self->setThemeFile("modules/UserCenter/user.php");
         }
 $tempStr = str_replace("/index.php","",$_SERVER['REQUEST_URI']);
-$self->response->setStatus(200);
+//$self->response->setStatus(200);
     $action = substr($tempStr,1,2 );
     if( $action == "go" ){
         $urlArr = include_once str_replace('core','',dirname(__FILE__)).'modules/url.php';
