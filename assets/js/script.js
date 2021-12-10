@@ -1,0 +1,1 @@
+    console.log("\n %c Bearsimple v1.8.3 %c https://github.com/whitebearcode/typecho-bearsimple \n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");

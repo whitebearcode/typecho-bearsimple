@@ -1,0 +1,126 @@
+.bs-row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom:auto;
+}
+
+.bs-text-center{
+    text-align: center;
+    font-size: 18px;
+}
+
+.bs-text-center h2{
+    font-weight: 500;
+    font-size: 1.6em;
+}
+
+.bs-text-center h2 span{
+    font-weight: 800;
+}
+
+.bs-text-center p{
+    max-width: 500px;
+    margin: 0 auto;
+    color: #6c757d;
+    line-height: 1.5;
+    font-size: 1em;
+}
+
+.bs-col{
+    width: 100%;
+    overflow: hidden;
+    padding: 15px;
+    word-break: break-all;
+}
+
+.bs-col .bs-card{
+    width: 100%;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.bs-col img{
+    width: 100%;
+    height: auto;
+    border: 0;
+}
+
+.bs-col .bs-card-body{
+    padding: 15px 15px 15px 15px;
+    background-color: #fff;
+}
+
+
+.bs-card-body h5{
+    font-size: 24px;
+    margin: 7px 0;
+}
+
+.bs-card:hover{
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+}
+
+.bs-card p{
+    color: #6c757d;
+}
+
+.bs-card-body .bs-date-author span{
+    color: #e74c3c;
+}
+
+.bs-card-body h5 a{
+    color: #222;
+}
+
+@media(min-width: 577px) and (max-width: 768px){
+    .bs-col{
+        width: 100%;
+    }
+}
+
+@media(max-width: 576px){
+    .bs-col{
+        width: 100%;
+    }
+}
+
+.iframe_video {
+position: relative;
+width: 100%;
+border-radius:10px;
+}
+@media only screen and (max-width: 767px) {
+.iframe_video {
+height: 15em;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.iframe_video {
+height: 20em;
+}
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+.iframe_video {
+ height: 30em;
+}
+}
+@media only screen and (min-width: 1200px) {
+.iframe_video {
+height: 40em;
+}
+}
+.iframe_cross {
+position: relative;
+width: 100%;
+height: 0;
+padding-bottom: 75%
+}
+.iframe_cross iframe {
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0;
+top: 0
+}
