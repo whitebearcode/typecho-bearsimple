@@ -2,7 +2,7 @@
 
 
 <div class="<?php if(Bsoptions('site_style') == '2'):?>hidden <?php endif;?>pure-u-1-4 hidden_mid_and_down">
-    <div id="sidebar" class="sidebar">
+    <aside id="sidebar" class="sidebar">
     
 <?php if(Bsoptions('AdControl') == true) :?>
 <?php if(Bsoptions('AdControl1') == true && !empty(Bsoptions('AdControl1Src'))) :?>
@@ -470,4 +470,4 @@
 <?php billboard(Bsoptions('AdControl2Src'),'sidebar'); ?> </div>
   <?php endif; ?>
   <?php endif; ?>
-</div></div> 
+</aside></div> 
