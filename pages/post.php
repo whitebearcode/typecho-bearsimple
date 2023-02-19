@@ -11,7 +11,8 @@
       <div class="pure-u-1 pure-u-md-<?php if(Bsoptions('site_style') == '1' || Bsoptions('site_style') == ''):?>3<?php endif;?><?php if(Bsoptions('site_style') == '2'):?>4<?php endif;?>-4">
              <div class="content_container">
 <div id="bearsimple-scroll">
-          <article class="post">
+	<article>
+          <div class="post">
                <?php if($this->fields->articleplo !== '1'): ?>
               <?php if($this->fields->articleplo == '2' && $this->fields->articleplo !== null): ?>
               <div class="ui top attached label"><h4><?php $this->fields->articleplonr() ?> </h4></div>
@@ -79,8 +80,9 @@
             
         	
 <?php endif;?>
-</p></div></div> </article>
-
+</p></div></div> </div>
+	
+<footer>
     <?php if($this->fields->tags == '1'): ?><br>
 <div class="ui tag label"><font color="gray">标签:</font><?php $this->tags('  ', true, '暂无标签'); ?></div>
  <?php endif;?>
@@ -133,5 +135,5 @@ window.poster_theme=<?php echo Bsoptions('Poster__Skin');?>;
     评论区已被封印~
   </div>
 </h3></center>
-</div></div>
+		     </div></footer></article></div>
 <?php endif; ?>
