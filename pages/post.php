@@ -11,6 +11,7 @@
       <div class="pure-u-1 pure-u-md-<?php if(Bsoptions('site_style') == '1' || Bsoptions('site_style') == ''):?>3<?php endif;?><?php if(Bsoptions('site_style') == '2'):?>4<?php endif;?>-4">
              <div class="content_container">
 <div id="bearsimple-scroll">
+	<article>
           <div class="post">
                <?php if($this->fields->articleplo !== '1'): ?>
               <?php if($this->fields->articleplo == '2' && $this->fields->articleplo !== null): ?>
@@ -26,7 +27,7 @@
 
               <h1  class="post-title" style="word-wrap:break-word;overflow:hidden;"><?php $this->title() ?></h1>
 
-<div class="post-meta"><i class="time outline icon"></i><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time><span> | </span><i class="folder open outline icon"></i><span class="category"><?php $this->category(','); ?></span><?php if($this->fields->Hot == '1'): ?> | <span><i class="hotjar icon" data-scid="<?php echo $this->cid; ?>"></i>热度:<?php _e(getViewsStr($this));?>°C</span><?php endif; ?> | <button class="ui mini gray icon button" id="fontsizes"><i class="font icon"></i></button><?php if(Bsoptions('Readmode') == true): ?><button class="ui mini gray icon button" id="read"><i class="book icon"></i></button><?php endif; ?><?php if($this->user->group == 'administrator'): ?>|  <button onclick="window.open('<?php $this->options->adminUrl('/write-post.php?cid='.$this->cid); ?>','_self')" class="ui mini gray icon button"><i class="pencil icon"></i></button><?php endif; ?><?php if(Bsoptions('Poster') == true && $this->fields->Poster == '1'): ?>| <button class="ui mini gray icon button bear-btn-bwqr bear-share-poster j-bwqr-poster-btn" data-cid="<?php echo $this->cid;?>" id="poster-btn">生成微海报</button><?php endif; ?></div>
+<header class="post-meta"><i class="time outline icon"></i><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time><span> | </span><i class="folder open outline icon"></i><span class="category"><?php $this->category(','); ?></span><?php if($this->fields->Hot == '1'): ?> | <span><i class="hotjar icon" data-scid="<?php echo $this->cid; ?>"></i>热度:<?php _e(getViewsStr($this));?>°C</span><?php endif; ?> | <button class="ui mini gray icon button" id="fontsizes"><i class="font icon"></i></button><?php if(Bsoptions('Readmode') == true): ?><button class="ui mini gray icon button" id="read"><i class="book icon"></i></button><?php endif; ?><?php if($this->user->group == 'administrator'): ?>|  <button onclick="window.open('<?php $this->options->adminUrl('/write-post.php?cid='.$this->cid); ?>','_self')" class="ui mini gray icon button"><i class="pencil icon"></i></button><?php endif; ?><?php if(Bsoptions('Poster') == true && $this->fields->Poster == '1'): ?>| <button class="ui mini gray icon button bear-btn-bwqr bear-share-poster j-bwqr-poster-btn" data-cid="<?php echo $this->cid;?>" id="poster-btn">生成微海报</button><?php endif; ?></header>
 <div class="post-content"><div id="para">
 <?php if ($this->fields->Overdue && $this->fields->Overdue !== 'close' && floor((time() - ($this->modified)) / 86400) > $this->fields->Overdue) : ?>
 <div class="ui warning icon message">
@@ -80,7 +81,8 @@
         	
 <?php endif;?>
 </p></div></div> </div>
-
+	
+<footer>
     <?php if($this->fields->tags == '1'): ?><br>
 <div class="ui tag label"><font color="gray">标签:</font><?php $this->tags('  ', true, '暂无标签'); ?></div>
  <?php endif;?>
@@ -133,5 +135,5 @@ window.poster_theme=<?php echo Bsoptions('Poster__Skin');?>;
     评论区已被封印~
   </div>
 </h3></center>
-</div></div>
+		     </div></footer></article></div>
 <?php endif; ?>
