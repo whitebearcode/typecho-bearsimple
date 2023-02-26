@@ -40,13 +40,49 @@ switch(Bsoptions('IframeProtect')){
  <?php if(!empty(Bsoptions('favicon'))): ?>
  <link rel="shortcut icon" href="<?php echo Bsoptions('favicon') ?>" />
  <?php endif; ?>
-
  <title><?php $this->archiveTitle(array(
             'category'  =>  _t('分类「%s」下的文章'),
             'search'    =>  _t('包含关键字「%s」的文章'),
             'tag'       =>  _t('标签「%s」下的文章'),
             'author'    =>  _t('「%s」发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
+    <?php if ($this->is('post')) : ?>    
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.xiaozonglin.cn/archives/Difficulties-and-solutions-in-China-s-manned-space-flight/"
+  },
+  "headline": "<?php $this->archiveTitle(); ?>",
+  "description": "<?php $this->excerpt(200, '...'); ?>",
+  "image": {
+    "@type": "ImageObject",
+    "url": "s",
+    "width": "a",
+    "height": "s"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "<?php $this->author(); ?>"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "a",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "a",
+      "width": "",
+      "height": ""
+    }
+  },
+  "datePublished": "2023-02-08",
+  "dateModified": "2023-02-13"
+}
+</script>
+<?php endif; ?>
+        
 <script src="//lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.12.4/jquery.min.js" type="application/javascript"></script>
 <link href="//cdn.staticfile.org/fomantic-ui/2.9.2/semantic.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<?php AssetsDir();?>assets/css/bearsimple.min.css?v=<?php echo themeVersion(); ?>">
