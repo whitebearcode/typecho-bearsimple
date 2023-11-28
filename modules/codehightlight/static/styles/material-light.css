@@ -1,0 +1,598 @@
+
+code[class*="language-"],
+pre[class*="language-"] {
+    border-radius:10px;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	color: #90a4ae;
+	background: #fafafa;
+	font-family: Roboto Mono, monospace;
+	font-size: 1em;
+	line-height: 1.5em;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+	background: #cceae7;
+	color: #263238;
+}
+
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+	background: #cceae7;
+	color: #263238;
+}
+
+:not(pre) > code[class*="language-"] {
+	white-space: normal;
+	border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+	padding: 1em 0.2em 0.1em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #f76d47;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #7c4dff;
+}
+
+.token.attr-name {
+	color: #39adb5;
+}
+
+.token.attr-value {
+	color: #f6a434;
+}
+
+.token.attribute {
+	color: #f6a434;
+}
+
+.token.boolean {
+	color: #7c4dff;
+}
+
+.token.builtin {
+	color: #39adb5;
+}
+
+.token.cdata {
+	color: #39adb5;
+}
+
+.token.char {
+	color: #39adb5;
+}
+
+.token.class {
+	color: #39adb5;
+}
+
+.token.class-name {
+	color: #6182b8;
+}
+
+.token.comment {
+	color: #aabfc9;
+}
+
+.token.constant {
+	color: #7c4dff;
+}
+
+.token.deleted {
+	color: #e53935;
+}
+
+.token.doctype {
+	color: #aabfc9;
+}
+
+.token.entity {
+	color: #e53935;
+}
+
+.token.function {
+	color: #7c4dff;
+}
+
+.token.hexcode {
+	color: #f76d47;
+}
+
+.token.id {
+	color: #7c4dff;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #7c4dff;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #39adb5;
+}
+
+.token.keyword {
+	color: #7c4dff;
+}
+
+.token.number {
+	color: #f76d47;
+}
+
+.token.operator {
+	color: #39adb5;
+}
+
+.token.prolog {
+	color: #aabfc9;
+}
+
+.token.property {
+	color: #39adb5;
+}
+
+.token.pseudo-class {
+	color: #f6a434;
+}
+
+.token.pseudo-element {
+	color: #f6a434;
+}
+
+.token.punctuation {
+	color: #39adb5;
+}
+
+.token.regex {
+	color: #6182b8;
+}
+
+.token.selector {
+	color: #e53935;
+}
+
+.token.string {
+	color: #f6a434;
+}
+
+.token.symbol {
+	color: #7c4dff;
+}
+
+.token.tag {
+	color: #e53935;
+}
+
+.token.unit {
+	color: #f76d47;
+}
+
+.token.url {
+	color: #e53935;
+}
+
+.token.variable {
+	color: #e53935;
+}
+/* Plugin styles */
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+	color: #e0d7d1;
+}
+
+/* Plugin overrides */
+/* Selectors should have higher specificity than those in the plugins' default stylesheets */
+
+/* Show Invisibles plugin overrides */
+.token.token.tab:not(:empty):before,
+.token.token.cr:before,
+.token.token.lf:before,
+.token.token.space:before {
+	color: hsla(230, 8%, 24%, 0.2);
+}
+
+/* Toolbar plugin overrides */
+/* Space out all buttons and move them away from the right edge of the code block */
+div.code-toolbar > .toolbar.toolbar > .toolbar-item {
+	margin-right: 0.4em;
+}
+
+/* Styling the buttons */
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
+	background: hsl(230, 1%, 90%);
+	color: hsl(230, 6%, 44%);
+	padding: 0.1em 0.4em;
+	border-radius: 0.3em;
+}
+
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
+	background: hsl(230, 1%, 78%); /* custom: darken(--syntax-bg, 20%) */
+	color: hsl(230, 8%, 24%);
+}
+
+/* Line Highlight plugin overrides */
+/* The highlighted line itself */
+.line-highlight.line-highlight {
+	background: hsla(230, 8%, 24%, 0.05);
+}
+
+/* Default line numbers in Line Highlight plugin */
+.line-highlight.line-highlight:before,
+.line-highlight.line-highlight[data-end]:after {
+	background: hsl(230, 1%, 90%);
+	color: hsl(230, 8%, 24%);
+	padding: 0.1em 0.6em;
+	border-radius: 0.3em;
+	box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); /* same as Toolbar plugin default */
+}
+
+/* Hovering over a linkable line number (in the gutter area) */
+/* Requires Line Numbers plugin as well */
+pre[id].linkable-line-numbers.linkable-line-numbers span.line-numbers-rows > span:hover:before {
+	background-color: hsla(230, 8%, 24%, 0.05);
+}
+
+/* Line Numbers and Command Line plugins overrides */
+/* Line separating gutter from coding area */
+.line-numbers.line-numbers .line-numbers-rows,
+.command-line .command-line-prompt {
+	border-right-color: hsla(230, 8%, 24%, 0.2);
+}
+
+/* Stuff in the gutter */
+.line-numbers .line-numbers-rows > span:before,
+.command-line .command-line-prompt > span:before {
+	color: hsl(230, 1%, 62%);
+}
+
+/* Match Braces plugin overrides */
+/* Note: Outline colour is inherited from the braces */
+.rainbow-braces .token.token.punctuation.brace-level-1,
+.rainbow-braces .token.token.punctuation.brace-level-5,
+.rainbow-braces .token.token.punctuation.brace-level-9 {
+	color: hsl(5, 74%, 59%);
+}
+
+.rainbow-braces .token.token.punctuation.brace-level-2,
+.rainbow-braces .token.token.punctuation.brace-level-6,
+.rainbow-braces .token.token.punctuation.brace-level-10 {
+	color: hsl(119, 34%, 47%);
+}
+
+.rainbow-braces .token.token.punctuation.brace-level-3,
+.rainbow-braces .token.token.punctuation.brace-level-7,
+.rainbow-braces .token.token.punctuation.brace-level-11 {
+	color: hsl(221, 87%, 60%);
+}
+
+.rainbow-braces .token.token.punctuation.brace-level-4,
+.rainbow-braces .token.token.punctuation.brace-level-8,
+.rainbow-braces .token.token.punctuation.brace-level-12 {
+	color: hsl(301, 63%, 40%);
+}
+
+/* Diff Highlight plugin overrides */
+/* Taken from https://github.com/atom/github/blob/master/styles/variables.less */
+pre.diff-highlight > code .token.token.deleted:not(.prefix),
+pre > code.diff-highlight .token.token.deleted:not(.prefix) {
+	background-color: hsla(353, 100%, 66%, 0.15);
+}
+
+pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
+pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
+pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
+pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
+	background-color: hsla(353, 95%, 66%, 0.25);
+}
+
+pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
+pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
+pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
+pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
+	background-color: hsla(353, 95%, 66%, 0.25);
+}
+
+pre.diff-highlight > code .token.token.inserted:not(.prefix),
+pre > code.diff-highlight .token.token.inserted:not(.prefix) {
+	background-color: hsla(137, 100%, 55%, 0.15);
+}
+
+pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
+pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
+pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
+pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
+	background-color: hsla(135, 73%, 55%, 0.25);
+}
+
+pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
+pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
+pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
+pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
+	background-color: hsla(135, 73%, 55%, 0.25);
+}
+
+/* Previewers plugin overrides */
+/* Based on https://github.com/atom-community/atom-ide-datatip/blob/master/styles/atom-ide-datatips.less and https://github.com/atom/atom/blob/master/packages/one-light-ui */
+/* Border around popup */
+.prism-previewer.prism-previewer:before,
+.prism-previewer-gradient.prism-previewer-gradient div {
+	border-color: hsl(0, 0, 95%);
+}
+
+/* Angle and time should remain as circles and are hence not included */
+.prism-previewer-color.prism-previewer-color:before,
+.prism-previewer-gradient.prism-previewer-gradient div,
+.prism-previewer-easing.prism-previewer-easing:before {
+	border-radius: 0.3em;
+}
+
+/* Triangles pointing to the code */
+.prism-previewer.prism-previewer:after {
+	border-top-color: hsl(0, 0, 95%);
+}
+
+.prism-previewer-flipped.prism-previewer-flipped.after {
+	border-bottom-color: hsl(0, 0, 95%);
+}
+
+/* Background colour within the popup */
+.prism-previewer-angle.prism-previewer-angle:before,
+.prism-previewer-time.prism-previewer-time:before,
+.prism-previewer-easing.prism-previewer-easing {
+	background: hsl(0, 0%, 100%);
+}
+
+/* For angle, this is the positive area (eg. 90deg will display one quadrant in this colour) */
+/* For time, this is the alternate colour */
+.prism-previewer-angle.prism-previewer-angle circle,
+.prism-previewer-time.prism-previewer-time circle {
+	stroke: hsl(230, 8%, 24%);
+	stroke-opacity: 1;
+}
+
+/* Stroke colours of the handle, direction point, and vector itself */
+.prism-previewer-easing.prism-previewer-easing circle,
+.prism-previewer-easing.prism-previewer-easing path,
+.prism-previewer-easing.prism-previewer-easing line {
+	stroke: hsl(230, 8%, 24%);
+}
+
+/* Fill colour of the handle */
+.prism-previewer-easing.prism-previewer-easing circle {
+	fill: transparent;
+}
+
+/* Plugin styles */
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+	color: #e0d7d1;
+}
+
+/* Plugin styles: Line Numbers */
+pre[class*="language-"].line-numbers {
+	padding-left: 0;
+}
+
+pre[class*="language-"].line-numbers code {
+	padding-left: 3.8em!important;
+}
+
+pre[class*="language-"].line-numbers .line-numbers-rows {
+	left: 0;
+}
+
+/* Plugin styles: Line Highlight */
+pre[class*="language-"][data-line] {
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+pre[data-line] code {
+	position: relative;
+	padding-left: 4em;
+}
+pre .line-highlight {
+	margin-top: 0;
+}
+
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+div.code-toolbar {
+	position: relative;
+}
+
+div.code-toolbar > .toolbar {
+	position: absolute;
+	top: .3em;
+	right: .2em;
+	transition: opacity 0.3s ease-in-out;
+	opacity: 0;
+}
+
+div.code-toolbar:hover > .toolbar {
+	opacity: 1;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+	display: inline-block;
+}
+
+div.code-toolbar > .toolbar a {
+	cursor: pointer;
+}
+
+div.code-toolbar > .toolbar button {
+	background: none;
+	border: 0;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	overflow: visible;
+	padding: 0;
+	-webkit-user-select: none; /* for button */
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button,
+div.code-toolbar > .toolbar span {
+	color: #bbb;
+	font-size: .8em;
+	padding: 0 .5em;
+	background: #f5f2f0;
+	background: rgba(224, 224, 224, 0.2);
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+	border-radius: .5em;
+}
+
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar a:focus,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar button:focus,
+div.code-toolbar > .toolbar span:hover,
+div.code-toolbar > .toolbar span:focus {
+	color: inherit;
+	text-decoration: none;
+}
+
+.max-img::-webkit-scrollbar-track-piece {
+	background:#eee
+}
+.max-img::-webkit-scrollbar {
+	width:8px;
+	height:6px;
+	display:none;
+}
+.max-img::-webkit-scrollbar-thumb {
+	border-radius:6px;
+	background-color:#777
+}
+.max-img::-webkit-scrollbar-thumb:hover {
+	background-color:#bbb
+}
+pre::-webkit-scrollbar-track-piece {
+	
+}
+pre::-webkit-scrollbar {
+	width:8px;
+	height:6px;
+	display:none;
+}
+pre::-webkit-scrollbar-thumb {
+	border-radius:4px;
+	background-color:#cbcbcb
+}
+pre::-webkit-scrollbar-thumb:hover {
+	background-color:#bbb
+}
+code::-webkit-scrollbar-track-piece {
+	display:none;
+}
+code::-webkit-scrollbar-corner {display:none;}
+code::-webkit-scrollbar {
+	width:6px;
+	height:6px;
+}
+code::-webkit-scrollbar-thumb {
+	border-radius:6px;
+	background-color:#dfdfdf
+}
+code::-webkit-scrollbar-thumb:hover {
+	background-color:#bbb
+}
+html::-webkit-scrollbar-track-piece {
+	background:#eee
+}
+html::-webkit-scrollbar {
+	width:8px;
+	height:6px;
+	display:none;
+}
+html::-webkit-scrollbar-thumb {
+	border-radius:4px;
+	background-color:#cbcbcb
+}
+html::-webkit-scrollbar-thumb:hover {
+	background-color:#bbb
+}
