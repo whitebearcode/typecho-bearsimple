@@ -1,0 +1,92 @@
+#face {
+    position: absolute;
+  transform:translate(10px,-60px);
+   
+}
+#facecross { 
+
+  transform:translate(10px,-60px);
+
+}
+#emotions{
+z-index:94361;
+	font-size:12px;
+	background:#fff;
+        width:auto;
+max-width:500px;
+	border: 1px solid #E8E8E8;
+border-radius:10px;
+}
+#emotions a{
+	color: #000000;
+	padding:2px 7px;
+	text-decoration:none;
+}
+#emotions img{
+	border:0;
+}
+#emotions div{
+	margin:5px 10px;
+	padding:1px;
+	overflow: hidden;
+	
+}
+#emotions #prev,
+#emotions #next
+{
+	margin-left:3px;
+	background:#eee;
+}
+#emotions .categorys{
+	color:#ccc;
+	height:43px;
+	color: #9ABBC8;
+
+	overflow:hidden;
+	border-radius:10px;
+}
+#emotions .categorys a{
+	display: inline-block;
+}
+#emotions .categorys a.current{
+	cursor: default;
+	background: #F0F0F0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius:10px;
+}
+#emotions .container{
+	padding:1px;
+	overflow: auto;
+	
+}
+#emotions .container a{
+	float:left;
+	width:50px;
+	height:30px;
+	text-align:center;
+	padding: 4px 2px;
+	margin: -1px 0 0 -1px;
+	border: 1px solid #e8e8e8;
+}
+#emotions .container a:hover{
+	z-index:2;
+	position:relative;
+	border:1px solid #0095cd;
+}
+#emotions .page{
+	text-align:right;
+}
+#emotions .page a.current{
+	color: #666;
+	background-color:#fff;
+}
+#emotions .page a{
+	margin-left:3px;
+	color: #0078B6;
+	background-color:#f3f3f3;
+	border-radius:10px;
+}
+#emotions .page a:hover{
+	background-color:#e7e7e7;
+}
