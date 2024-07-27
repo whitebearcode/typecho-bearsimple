@@ -1,0 +1,128 @@
+#face {
+    position: absolute;
+  transform:translate(10px,-60px);
+   
+}
+#facecross { 
+
+  transform:translate(10px,-60px);
+
+}
+
+#facesays { 
+
+  transform:translate(10px,-45px);
+
+}
+#facecircle {
+transform:translate(10px,-45px);
+   
+}
+.emotions{
+    z-index:94361;
+	font-size:12px;
+	background:#fff;
+        width:100%;
+max-width:500px;
+
+	border: 1px solid #E8E8E8;
+border-radius:10px;
+}
+.emotions a{
+	color: #000000;
+	padding:2px 7px;
+	text-decoration:none;
+}
+.emotions img{
+	border:0;
+}
+.emotions div{
+	margin:5px 10px;
+	padding:1px;
+	overflow: hidden;
+	
+}
+.emotions #prev,
+.emotions #next
+{
+	margin-left:3px;
+	background:#eee;
+}
+.emotions .categorys{
+    position:relative;
+    top:5px;
+	color:#ccc;
+	height:23px;
+	color: #9ABBC8;
+	width:100%;
+	max-width:100%;
+	display:inline;
+
+	
+	border-radius:10px;
+}
+.emotions .categorys a{
+	display: inline-block;
+}
+.emotions .categorys a.current{
+	cursor: default;
+	background: #F0F0F0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius:10px;
+}
+.emotions .container{
+
+	padding:1px;
+
+	width:100%;
+}
+.emotions .container a span{
+    word-break:break-all;
+}
+.emotions .container a:not(:has(img)){
+    float:left;
+	width:50px;
+	height:30px;
+	text-align:center;
+	padding: 4px 2px;
+	margin: -1px 0 0 -1px;
+	border: 1px solid #e8e8e8;
+	word-break:break-all;
+}
+.emotions .container a:not(:has(img)):hover{
+	z-index:2;
+	position:relative;
+	border:1px solid #0095cd;
+	width:100%;
+}
+.emotions .container a img{
+	width:50px;
+	height:50px;
+	text-align:center;
+	padding: 4px 2px;
+	margin: -1px 0 0 -1px;
+
+	border-radius:5px;
+}
+.emotions .container a img:hover{
+	z-index:2;
+	position:relative;
+	border:1px solid #0095cd;
+}
+.emotions .page{
+	text-align:right;
+}
+.emotions .page a.current{
+	color: #666;
+	background-color:#fff;
+}
+.emotions .page a{
+	margin-left:3px;
+	color: #0078B6;
+	background-color:#f3f3f3;
+	border-radius:10px;
+}
+.emotions .page a:hover{
+	background-color:#e7e7e7;
+}
