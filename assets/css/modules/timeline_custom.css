@@ -1,0 +1,10 @@
+/**
+*
+* BearSimple主题自定义样式 - 时光机微语
+* Update:18/01/2023
+*
+**/
+
+
+/* 时光机 PC端树状样式 */
+@media only screen and (min-width:1170px){#bs-timeline{margin-top:3em;margin-bottom:3em;}#bs-timeline::before{left:50%;margin-left:-2px;}}@media only screen and (min-width:1170px){.bs-timeline-block{margin:4em 0;}.bs-timeline-block:first-child{margin-top:0;}.bs-timeline-block:last-child{margin-bottom:0;}}@media only screen and (min-width:1170px){.bs-timeline-img{width:60px;height:60px;left:50%;margin-left:-30px;-webkit-transform:translateZ(0);-webkit-backface-visibility:hidden;}.bs-timeline-img img{display:block;border-radius:50%;width:60px;height:60px;position:relative;left:50%;top:50%;margin-left:-30px;margin-top:-30px;}.cssanimations .bs-timeline-img.is-hidden{visibility:hidden;}.cssanimations .bs-timeline-img.bounce-in{visibility:visible;-webkit-animation:bs-bounce-1 0.6s;-moz-animation:bs-bounce-1 0.6s;animation:bs-bounce-1 0.6s;}}@media only screen and (min-width:1170px){.bs-timeline-content{margin-left:0;padding:1.6em;width:45%;}.bs-timeline-content::before{top:24px;left:100%;border-color:transparent;border-left-color:#ffffff;}.bs-timeline-content .bs-read-more{float:left;}.bs-timeline-content .bs-date{position:absolute;width:100%;left:122%;top:6px;font-size:16px;font-size:1rem;}.bs-timeline-block:nth-child(even) .bs-timeline-content{float:right;}.bs-timeline-block:nth-child(even) .bs-timeline-content::before{top:24px;left:auto;right:100%;border-color:transparent;border-right-color:#ffffff;}.bs-timeline-block:nth-child(even) .bs-timeline-content .bs-read-more{float:right;}.bs-timeline-block:nth-child(even) .bs-timeline-content .bs-date{left:auto;right:122%;text-align:right;}.cssanimations .bs-timeline-content.is-hidden{visibility:hidden;}.cssanimations .bs-timeline-content.bounce-in{visibility:visible;-webkit-animation:bs-bounce-2 0.6s;-moz-animation:bs-bounce-2 0.6s;animation:bs-bounce-2 0.6s;}}@media only screen and (min-width:1170px){.cssanimations .bs-timeline-block:nth-child(even) .bs-timeline-content.bounce-in{-webkit-animation:bs-bounce-2-inverse 0.6s;-moz-animation:bs-bounce-2-inverse 0.6s;animation:bs-bounce-2-inverse 0.6s;}}
