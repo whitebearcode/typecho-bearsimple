@@ -1,0 +1,176 @@
+#face {
+    position: absolute;
+  transform:translate(10px,-60px);
+   
+}
+#facecross { 
+
+  transform:translate(10px,-60px);
+
+}
+
+#facesays { 
+
+  transform:translate(10px,-45px);
+
+}
+#facecircle {
+transform:translate(10px,-45px);
+   
+}
+.emotions {
+    z-index: 94361;
+    font-size: 14px;
+    background: #f8f9fa;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #e0e3e7;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow:hidden;
+}
+
+.emotions .categorys {
+    background: #f1f3f5;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.emotions .categorys::-webkit-scrollbar {
+    height: 6px;
+}
+
+.emotions .categorys::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.emotions .categorys::-webkit-scrollbar-thumb {
+    background: #f1f3f5!important;
+    border-radius: 3px;
+}
+
+.emotions .categorys::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.emotions .categorys a {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #495057;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap; 
+    font-size: 13px;
+}
+
+.emotions .categorys a.current {
+    background: #495057;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.emotions .categorys a:hover:not(.current) {
+    background: #dee2e6;
+    color: #343a40;
+}
+
+.emotions .container a span{
+   display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin: 5px;
+}
+
+.emotions .container {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 52px);
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    min-height: 200px;
+}
+
+.emotions .emoticon-item {
+    width: 52px !important;
+    height: 52px !important;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.emotions .emoticon-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.emotions .emoticon-item:hover {
+    transform: scale(1.08);
+    border-color: #6c757d;
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
+    z-index: 1;
+}
+
+.emotions .page {
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.emotions .page a {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #dee2e6;
+    color: #343a40;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+.emotions .page a:hover {
+    background: #6c757d;
+    color: white;
+}
+
+.emotions .page a.current {
+    background: #495057;
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .emotions .container {
+        grid-template-columns: repeat(auto-fill, 46px);
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .emotions .emoticon-item {
+        width: 46px !important;
+        height: 46px !important;
+    }
+    
+    .emotions .categorys {
+        padding: 8px 12px;
+    }
+    
+    .emotions .categorys a {
+        padding: 6px 12px;
+    }
+}

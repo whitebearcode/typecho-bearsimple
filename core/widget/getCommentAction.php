@@ -1,0 +1,37 @@
+<?php
+session_start();
+use Typecho\Db;
+use Typecho\Common;
+use Widget\Options;
+header("HTTP/1.1 200 OK");
+header("Access-Control-Allow-Origin: *");
+date_default_timezone_set('PRC');
+error_reporting(0);
+$options = Helper::options();
+    $temoptions = bsOptions::getInstance()::get_option( 'bearsimple' );
+    $removeChar = ["https://", "http://"]; 
+    
+    if (strpos($_SERVER['HTTP_REFERER'], str_replace($removeChar, "", $options->siteUrl)) !== false) {   
+if($_POST['action'] == 'getCommentToken'){
+    if (!isset($_SESSION['token'])) {
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+}
+$str = mt_rand(100001,999999); 
+     $key = Helper::options()->siteUrl; 
+$this->response->throwJson([
+            'code'=> 1,
+            'msg' => '获取成功',
+            'token'=>$_SESSION['token']
+    ]);
+return;
+}
+elseif($_POST['action'] == 'getCommentMessage'){
+   $ret = \Typecho\Cookie::get('__typecho_notice_type');
+   $this->response->throwJson([
+            'code'=> 1,
+            'msg' => '获取成功',
+            'message'=>$ret
+    ]);
+return;
+}
+}
