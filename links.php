@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     /**
     * 友链
     *
@@ -8,10 +8,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $loader = Bsoptions('Lazyload_style');
 ?>
-<?php $this->need('compoment/head.php');?>
-<div class="pure-g" id="layout">
-            <div class="pure-u-1 pure-u-md-<?php if(Bsoptions('site_style') == '1' || Bsoptions('site_style') == ''):?>3<?php endif;?><?php if(Bsoptions('site_style') == '2'):?>4<?php endif;?>-4">
-                <div class="content_container">
+<?php $this->need('templates/layouts/header.php');?>
+<?php $this->need('templates/partials/grid-open.php');?>
          <div class="page-card">
                 <h2><i class="jsfiddle icon"></i> <?php $this->title() ?></h2><br>    
 
@@ -59,5 +57,6 @@ $loader = Bsoptions('Lazyload_style');
 
 
 
-<?php $this->need('compoment/sidebar.php'); ?>
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/partials/grid-close.php');?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>

@@ -1,6 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;?>
-<?php $this->need('compoment/head.php');?>
+<?php $this->need('templates/layouts/header.php');?>
 <?php 
 $category = array();
 $category['title'] = $this->getArchiveTitle();
@@ -20,21 +20,21 @@ if ((!empty($password) && $password == $category['md5_password']) || $this->user
 
 ?>
 <?php if(Bsoptions('Cate_Encrypt_open') == true && !empty(CategoryEncrypt(categeid($this->getArchiveSlug()))) && !$cookie):?>
-<?php $this->need('modules/lock.php'); ?>
+<?php $this->need('modules/access-control/lock.php'); ?>
 <?php else:?>
 
 <?php if(!empty(CategoryAlbum(categeid($this->getArchiveSlug()))) && $this->is('category')):?>
-<?php $this->need('pages/album.php'); ?>
+<?php $this->need('templates/pages/album.php'); ?>
 <?php elseif($this->is('author')):?>
-<?php $this->need('pages/author.php'); ?>
+<?php $this->need('templates/pages/author.php'); ?>
 <?php else:?>
 
 
 
-<?php $this->need('pages/archive.php'); ?>
+<?php $this->need('templates/pages/archive.php'); ?>
 
 <?php endif; ?>
 
 <?php endif; ?>
-<?php $this->need('compoment/sidebar.php'); ?>
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>

@@ -9,12 +9,12 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
- $this->need('compoment/head.php');
+ $this->need('templates/layouts/header.php');
   ?>
 
 
-<?php $this->need('pages/index-z.php'); ?>
+<?php $this->need('templates/pages/index-content.php'); ?>
 
 
-<?php $this->need('compoment/sidebar.php'); ?>
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>

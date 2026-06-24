@@ -6,10 +6,10 @@
     */
 ?>
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('compoment/head.php');?>
-<link href="<?php AssetsDir();?>assets/vendors/friendcircle/friendcircle.css?v=28" rel="stylesheet">
-<link href="<?php AssetsDir();?>assets/vendors/friendcircle/plyr.min.css" rel="stylesheet">
-<script src="<?php AssetsDir();?>assets/vendors/friendcircle/amrParse.js"></script>
+<?php $this->need('templates/layouts/header.php');?>
+<link href="<?php AssetsDir();?>assets/vendor/friendcircle/friendcircle.css?v=28" rel="stylesheet">
+<link href="<?php echo bs_asset_url('assets/vendor/friendcircle/plyr.min.css'); ?>" rel="stylesheet">
+<script src="<?php echo bs_asset_url('assets/vendor/friendcircle/amrParse.js'); ?>"></script>
 
 <?php
 $parameter= array(
@@ -34,8 +34,8 @@ $this->widget('BearSimple_Widget_Friendcircle_Archive',$parameter)->to($comments
                     <h2><i class="fan green icon"></i><?php $this->title() ?></h2>
     <div class="friendcircle-container">
         <section class="friendcircle-bg">
-            <img src="<?php if(Bsoptions('fcircle_Background') == null): ?><?php AssetsDir();?>assets/images/mountain.webp<?php else:?><?php echo Bsoptions('fcircle_Background');?><?php endif;?>" class="friendcircle-bg-img">
-            <img src="<?php if(Bsoptions('fcircle_Avatar') == null): ?><?php AssetsDir();?>assets/images/circle_defaultAvatar.jpg<?php else:?><?php echo Bsoptions('fcircle_Avatar');?><?php endif;?>" class="friendcircle-bg-author">
+            <img src="<?php if(Bsoptions('fcircle_Background') == null): ?><?php AssetsDir();?>assets/media/mountain.webp<?php else:?><?php echo Bsoptions('fcircle_Background');?><?php endif;?>" class="friendcircle-bg-img">
+            <img src="<?php if(Bsoptions('fcircle_Avatar') == null): ?><?php AssetsDir();?>assets/media/circle_defaultAvatar.jpg<?php else:?><?php echo Bsoptions('fcircle_Avatar');?><?php endif;?>" class="friendcircle-bg-author">
             <span class="friendcircle-bg-author-name"><?php if(Bsoptions('fcircle_Name') == null): ?>神秘人<?php else:?><?php echo Bsoptions('fcircle_Name');?><?php endif;?></span>
             <span class="friendcircle-bg-author-sign"><?php if(Bsoptions('fcircle_Sign') == null): ?>神秘人的朋友圈<?php else:?><?php echo Bsoptions('fcircle_Sign');?><?php endif;?></span>
         </section>
@@ -215,12 +215,12 @@ $this->widget('BearSimple_Widget_Friendcircle_Archive',$parameter)->to($comments
 </div></div>
 
 
-<script src="<?php AssetsDir();?>assets/vendors/friendcircle/moxie.js?v=2"></script>
-<script src="<?php AssetsDir();?>assets/vendors/friendcircle/plupload.js"></script>
+<script src="<?php AssetsDir();?>assets/vendor/friendcircle/moxie.js?v=2"></script>
+<script src="<?php echo bs_asset_url('assets/vendor/friendcircle/plupload.js'); ?>"></script>
 
-<script src="<?php AssetsDir();?>assets/vendors/friendcircle/plyr.min.js"></script>
+<script src="<?php echo bs_asset_url('assets/vendor/friendcircle/plyr.min.js'); ?>"></script>
 
-<script src="<?php AssetsDir();?>assets/vendors/friendcircle/funlazy.min.js"></script>
+<script src="<?php echo bs_asset_url('assets/vendor/friendcircle/funlazy.min.js'); ?>"></script>
        
    
 
@@ -228,7 +228,7 @@ $this->widget('BearSimple_Widget_Friendcircle_Archive',$parameter)->to($comments
 <script>
 
 FunLazy({
-    placeholder: "<?php AssetsDir();?>assets/images/load.gif",
+    placeholder: "<?php AssetsDir();?>assets/media/load.gif",
     effect: "fadeIn"
 });
     function amrParse(){
@@ -391,7 +391,7 @@ player.play();
 }
 plyr();
           <?php if(Bsoptions('Emoji') == false) :?>
-          $.getScript(setting.import+"assets/vendors/bs-emoji/bs-emoji.js?v=1.5",function(){
+          $.getScript(setting.import+"assets/vendor/bs-emoji/bs-emoji.js?v=1.5",function(){
         $('#facecircle').BearsimpleEmoji($('.emotion'));
           $('#facecirclecomment').BearsimpleEmoji($('.emotion_circle'));
               
@@ -721,7 +721,7 @@ if (preg_match("/^([0-9]+)([a-z]{1,2})$/i", $phpMaxFilesize, $matches)) {
 				runtimes: 'html5,flash,silverlight,html4',
 				browse_button: 'btn',
 				url: "<?php $this->security->index('/action/upload?cid='.$this->cid);?>",
-				flash_swf_url   :   '<?php AssetsDir();?>assets/vendors/friendcircle/Moxie.swf',
+				flash_swf_url   :   '<?php AssetsDir();?>assets/vendor/friendcircle/Moxie.swf',
             filters         :   {
                 max_file_size       :   '<?php echo $phpMaxFilesize;?>',
                 mime_types          :   [{'title' : '允许上传的文件', 'extensions' : 'gif,jpg,jpeg,png,bmp,webp'}],
@@ -775,7 +775,7 @@ if (preg_match("/^([0-9]+)([a-z]{1,2})$/i", $phpMaxFilesize, $matches)) {
 				runtimes: 'html5,flash,silverlight,html4',
 				browse_button: 'btn_v',
 				url: "<?php $this->security->index('/action/upload?cid='.$this->cid);?>",
-				flash_swf_url   :   '<?php AssetsDir();?>assets/vendors/friendcircle/Moxie.swf',
+				flash_swf_url   :   '<?php AssetsDir();?>assets/vendor/friendcircle/Moxie.swf',
             filters         :   {
                 max_file_size       :   '<?php echo $phpMaxFilesize;?>',
                 mime_types          :   [{'title' : '允许上传的文件', 'extensions' : 'mp3,mp4,mov,wmv,wma,rmvb,rm,avi,flv,ogg,oga,ogv,flac,amr,speex'}],
@@ -1033,8 +1033,8 @@ $("#commentform").css("pointer-events","auto");
 
 </div>
  <?php if(Bsoptions('fcircle_hiddenMode') == false || Bsoptions('fcircle_hiddenMode') == ''):?>
-<?php $this->need('compoment/sidebar.php'); ?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
 <?php endif;?>
     
              
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>
