@@ -184,28 +184,28 @@ $this->widget('Bearsimple_Widget_Comments_Archive',$parameter)->to($comments);
              <?php case '2' :?>
              </div>
              
-             <?php $this->need('modules/Verify/BearCaptcha/Vaptcha/Vaptcha.php'); ?>
+             <?php $this->need('modules/verify/Vaptcha/Vaptcha.php'); ?>
 <button type="button" id="commentsubmit" class="ui button" style="float:left;margin-top:5px" disabled="">
   提交评论
 </button>
              <?php break; ?>
              <?php case '2-1' :?>
              </div>
-             <?php $this->need('modules/Verify/BearCaptcha/Dingxiang/DX_Captcha.php'); ?>
+             <?php $this->need('modules/verify/Dingxiang/DX_Captcha.php'); ?>
 <button type="button" id="commentsubmit" class="ui button" style="float:left;margin-top:5px" disabled="">
   提交评论
 </button>
              <?php break; ?>
              <?php case '2-2' :?>
              </div>
-             <?php $this->need('modules/Verify/BearCaptcha/Turnstile/Turnstile.php'); ?>
+             <?php $this->need('modules/verify/Turnstile/Turnstile.php'); ?>
 <button type="button" id="commentsubmit" class="ui button" style="float:left;margin-top:5px" disabled="">
   提交评论
 </button>
              <?php break; ?>
               <?php case '2-3' :?>
              </div>
-             <?php $this->need('modules/Verify/BearCaptcha/Geetest/Geetest.php'); ?>
+             <?php $this->need('modules/verify/Geetest/Geetest.php'); ?>
 <button type="button" id="commentsubmit" class="ui button" style="float:left;margin-top:5px" disabled="">
   提交评论
 </button>
@@ -220,7 +220,7 @@ $this->widget('Bearsimple_Widget_Comments_Archive',$parameter)->to($comments);
   提交评论
 </button>
 </p>
-<?php $this->need('modules/Verify/BearCaptcha/Captcha/Captcha.php'); ?>
+<?php $this->need('modules/verify/Captcha/Captcha.php'); ?>
              <?php break; ?>
      <?php case '3' || '' :?>
      </div><p>

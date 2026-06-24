@@ -12,7 +12,7 @@ if(!class_exists('CSF')){
 if (!class_exists('bsOptions')){
     require_once \Utils\Helper::options()->pluginDir('BsCore').'/bsOptions.php';
 }
-require_once('core/func.php');
+require_once('src/Helpers/functions.php');
 function themeVersion()
         {
             return '2.9.9.20250803';
@@ -49,7 +49,7 @@ function reEmo($comment,$type){
 $context = stream_context_create($opts);
 
         if(Bsoptions('Emoji_HideDefault') == false || Bsoptions('Emoji_HideDefault') == ''){
-        $res = json_decode(file_get_contents(__DIR__.'/assets/vendors/bs-emoji/bs-emoji.json', false, $context),true);
+        $res = json_decode(file_get_contents(__DIR__.'/assets/vendor/bs-emoji/bs-emoji.json', false, $context),true);
         $emo = $res;
         }
         if(Bsoptions('Emoji_Diy') == true && Bsoptions('Emoji_DiyUrl') !== ''){
@@ -104,7 +104,7 @@ $options = Helper::options();
 $context = stream_context_create($opts);
 
         if(Bsoptions('Emoji_HideDefault') == false || Bsoptions('Emoji_HideDefault') == ''){
-        $res = json_decode(file_get_contents($options->themeUrl."/assets/vendors/bs-emoji/bs-emoji.json", false, $context),true);
+        $res = json_decode(file_get_contents($options->themeUrl."/assets/vendor/bs-emoji/bs-emoji.json", false, $context),true);
         $emo = $res;
         }
         if(Bsoptions('Emoji_Diy') == true && Bsoptions('Emoji_DiyUrl') !== ''){
@@ -168,8 +168,8 @@ if( class_exists( 'CSF' ) ) {
  <div class="csf-submessage csf-submessage-info">当前版本:v'.themeVersion().' / 最新版本:v<font id="version"></font></div>
 <div id="versiontips" style="margin-top:10px"></div></center>
 
-<script src="'.Helper::options()->themeUrl.'/assets/js/jquery.min.js"></script>
-  <script src="'.Helper::options()->themeUrl.'/assets/vendors/layer/layer.min.js?v=1" type="application/javascript"></script>
+<script src="'.Helper::options()->themeUrl.'/assets/scripts/jquery.min.js"></script>
+  <script src="'.Helper::options()->themeUrl.'/assets/vendor/layer/layer.min.js?v=1" type="application/javascript"></script>
 <script>
 
 $(function() {
@@ -217,7 +217,7 @@ array(
 
     )
 ) );
-$siteMaintenance_files = glob(__DIR__ . '/modules/siteMaintenance/*.html');
+$siteMaintenance_files = glob(__DIR__ . '/modules/site-maintenance/*.html');
 $siteMaintenance_styles = array_map('basename', $siteMaintenance_files);
 $siteMaintenance_associative = array_combine($siteMaintenance_styles, $siteMaintenance_styles);
   CSF::createSection( $prefix, array(
@@ -281,7 +281,7 @@ $siteMaintenance_associative = array_combine($siteMaintenance_styles, $siteMaint
             'id'          => 'siteMaintenance_templates',
             'type'        => 'select',
             'title'       => '维护模式模板',
-            'after' => '选择维护模式模板，邮件模板可自由DIY，目录位于/usr/themes/bearsimple/modules/siteMaintenance',
+            'after' => '选择维护模式模板，邮件模板可自由DIY，目录位于/usr/themes/bearsimple/modules/site-maintenance',
             'options'     => $siteMaintenance_associative,
             'default' => 'default.html',
             'dependency' => array( 'siteMaintenance_Open', '==', 'true' ),
@@ -891,7 +891,7 @@ $siteMaintenance_associative = array_combine($siteMaintenance_styles, $siteMaint
     )
   ) );
 if(isset($Tyoptions->cronKey)){
-$cronUrl = 'php '.__DIR__.'/core/widget/cron.php '.$Tyoptions->cronKey;
+$cronUrl = 'php '.__DIR__.'/src/Controllers/CronController.php '.$Tyoptions->cronKey;
 }
 else{
     $cronUrl = '未初始化自动检查密钥，请刷新后重新查看';
@@ -1258,7 +1258,7 @@ padding:10px;
             'id'          => 'Lazyload_style',
             'type'        => 'select',
             'title'       => '选择图片加载效果',
-            'after' => '图片加载效果指的是图片在加载时展现出来的动效，可以<a target="_blank" href="http://b3.typecho.ru/usr/themes/bearsimple/assets/images/loaders/">戳这里进行预览所有效果</a>。',
+            'after' => '图片加载效果指的是图片在加载时展现出来的动效，可以<a target="_blank" href="http://b3.typecho.ru/usr/themes/bearsimple/assets/media/loaders/">戳这里进行预览所有效果</a>。',
             'options'     => $lazy_styles,
             'default' => 'none',
             'dependency' => array( 'Lazyload', '==', '1' ),
@@ -1290,8 +1290,8 @@ padding:10px;
        $mail_api = Common::url('/action/' . BsCore_Plugin::$action, Options::alloc()->index).'?do=testMail';
 
         $mail_html .= '<a id="testmail" class="button button-primary csf--button">邮件发送测试</a>
-        <link href="'.Helper::options()->themeUrl.'/assets/vendors/toastr.js/toastr.min.css" rel="stylesheet">
-	<script src="'.Helper::options()->themeUrl.'/assets/vendors/toastr.js/toastr.min.js"></script>
+        <link href="'.Helper::options()->themeUrl.'/assets/vendor/toastr.js/toastr.min.css" rel="stylesheet">
+	<script src="'.Helper::options()->themeUrl.'/assets/vendor/toastr.js/toastr.min.js"></script>
         <script>
         document.getElementById("testmail").onclick = function(){
         $.post("'.$mail_api.'",function(data,status){
@@ -2127,8 +2127,8 @@ toastr.error("抱歉，测试邮件发送请求错误，返回错误:"+content.t
        $cache_api = Common::url('clean-cache', Options::alloc()->index);
 
         $cache_html .= '<style>code{border-radius:5px}</style><a id="cleancache" class="button button-primary csf--button">清空缓存</a><br><br>需要注意：当选择的是<font color=red>Sqlite或Flysystem缓存</font>时请在站点根目录创建caches目录，缓存文件会存储到该目录中~
-        <link href="'.Helper::options()->themeUrl.'/assets/vendors/toastr.js/toastr.min.css" rel="stylesheet">
-	<script src="'.Helper::options()->themeUrl.'/assets/vendors/toastr.js/toastr.min.js"></script>
+        <link href="'.Helper::options()->themeUrl.'/assets/vendor/toastr.js/toastr.min.css" rel="stylesheet">
+	<script src="'.Helper::options()->themeUrl.'/assets/vendor/toastr.js/toastr.min.js"></script>
         <script>
         document.getElementById("cleancache").onclick = function(){
         $.get("'.$cache_api.'",function(data,status){
@@ -2439,7 +2439,7 @@ break;
             
         ),
         ));
-  $styles = array_map('basename', glob(dirname(__FILE__) . '/modules/codehightlight/static/styles/*.css'));
+  $styles = array_map('basename', glob(dirname(__FILE__) . '/modules/code-highlight/static/styles/*.css'));
         $styles = array_combine($styles, $styles);
         
 $sync_html2 = '';
@@ -2517,7 +2517,7 @@ break;
             'id'          => 'code_style',
             'type'        => 'select',
             'title'       => '选择高亮主题风格',
-            'after' => '高亮主题风格文件在/usr/themes/bearsimple/modules/codehightlight/static/style中，您可以自行设计样式放入该目录,即可在本项选择',
+            'after' => '高亮主题风格文件在/usr/themes/bearsimple/modules/code-highlight/static/style中，您可以自行设计样式放入该目录,即可在本项选择',
             'options'     => $styles,
             'default' => 'GrayMac.css',
             'dependency' => array( 'Codehightlight', '==', '1' ),
@@ -3313,7 +3313,7 @@ array(
         
         ),
   ) );
-    if(file_exists(__TYPECHO_ROOT_DIR__.'/usr/themes/bearsimple/core/extend/vendor/maxmind-db/GeoLite2-City.mmdb')){
+    if(file_exists(__TYPECHO_ROOT_DIR__.'/usr/themes/bearsimple/src/Integrations/MaxMind/reader/GeoLite2-City.mmdb')){
             $max_tips = '<font color=green>maxmind-db目录已存在，无需下载</font>';
         }
         else{
@@ -3439,7 +3439,7 @@ array(
             'type'    => 'switcher',
             'title'       => '评论是否显示IP属地',
             'default' => false,
-            'subtitle'=>'若开启，则评论区每个评论者都将显示IP属地。<br><font color=red>开启本功能需下载maxmind-db数据库，<a href="https://extensions.typecho.co.uk/addons/maxmind-db.zip">戳这里下载</a>，将压缩包中的maxmind-db目录放入/usr/themes/bearsimple/core/extend/vendor/中即可</font><br>检测：'.$max_tips
+            'subtitle'=>'若开启，则评论区每个评论者都将显示IP属地。<br><font color=red>开启本功能需下载maxmind-db数据库，<a href="https://extensions.typecho.co.uk/addons/maxmind-db.zip">戳这里下载</a>，将压缩包中的maxmind-db目录放入/usr/themes/bearsimple/src/Integrations/MaxMind/中即可</font><br>检测：'.$max_tips
         ),
         array(
             'id'      => 'Comment_ipget_data',
@@ -4699,7 +4699,7 @@ break;
             'id'       => 'ServiceWorker',
             'type'    => 'text',
             'title'    => 'ServiceWorker规则文件名',
-            'after' => 'ServiceWorker可为您的博客提供前端静态资源缓存，从而加快访问速度(前提是站点已开启HTTPS)<br><font color=red>您需要在这里填上规则文件名，规则文件在主题目录/vendors/BearSimpleCacheRules.js，将该文件复制一份到您的站点根目录，并在这里填上文件名，如为默认的BearSimpleCacheRules.js，则填BearSimpleCacheRules.js即可。</font><br>不填则表示不开启。',
+            'after' => 'ServiceWorker可为您的博客提供前端静态资源缓存，从而加快访问速度(前提是站点已开启HTTPS)<br><font color=red>您需要在这里填上规则文件名，规则文件在主题目录/assets/scripts/service-worker-rules.js，将该文件复制一份到您的站点根目录，并在这里填上文件名，如为默认的service-worker-rules.js，则填service-worker-rules.js即可。</font><br>不填则表示不开启。',
         ),
         
       array(
@@ -4759,7 +4759,7 @@ break;
             'id'          => 'safeRedirection',
             'type'        => 'switcher',
             'title'       => '免责声明',
-            'subtitle' => '选择开启则当访客从外站访问本站页面时将显示免责声明<br>免责声明Demo请戳<a href="'.$Tyoptions->siteUrl.'usr/themes/bearsimple/assets/images/safeDem.png">这里</a>',
+            'subtitle' => '选择开启则当访客从外站访问本站页面时将显示免责声明<br>免责声明Demo请戳<a href="'.$Tyoptions->siteUrl.'usr/themes/bearsimple/assets/media/safeDem.png">这里</a>',
             'default' => false,
         ),
         array(
@@ -4947,7 +4947,7 @@ break;
         
     )
   ) );
-$template_files = scandir(dirname(__FILE__) . '/modules/GoLinks/templates');
+$template_files = scandir(dirname(__FILE__) . '/modules/go-links/templates');
         $goTemplates = array('NULL' => '禁用');
         foreach ($template_files as $item) {
             if (PATH_SEPARATOR !== ':') {
@@ -5113,7 +5113,7 @@ $template_files = scandir(dirname(__FILE__) . '/modules/GoLinks/templates');
          array(
             'type'    => 'notice',
             'style'   => 'info',
-            'content' => '<h4><strong>服务使用说明</strong></h4><li>1、当前支持发送内容至微语或朋友圈，但需注意的是请选择好下方要发送内容的页面！</li><li>2、朋友圈：若选择的是朋友圈页面，发送“发朋友圈”四个字即可开启朋友圈模式，朋友圈模式中可发送图片、语音和视频内容，媒体文件缓存临时目录：/usr/uploads/wechatServer/，该目录中的图片可以直接删除，不会造成任何影响~</li><li>3、微语：发送除了指定关键字外的任意文字都将发送到选择的微语页面</li><li>4、发送微语的方法与朋友圈是互通的，也就是说没有开启朋友圈模式下发送除了指定关键字外的任意文字也可以发送到朋友圈</li><li><font color=red>5、最重要的一点：需将/usr/themes/bearsimple/vendors目录中的Upload.php放至/var/Widget目录直接覆盖原有文件，不然朋友圈模式的媒体资源无法正常上传到博客这里，切记！！！</font></li>',
+            'content' => '<h4><strong>服务使用说明</strong></h4><li>1、当前支持发送内容至微语或朋友圈，但需注意的是请选择好下方要发送内容的页面！</li><li>2、朋友圈：若选择的是朋友圈页面，发送“发朋友圈”四个字即可开启朋友圈模式，朋友圈模式中可发送图片、语音和视频内容，媒体文件缓存临时目录：/usr/uploads/wechatServer/，该目录中的图片可以直接删除，不会造成任何影响~</li><li>3、微语：发送除了指定关键字外的任意文字都将发送到选择的微语页面</li><li>4、发送微语的方法与朋友圈是互通的，也就是说没有开启朋友圈模式下发送除了指定关键字外的任意文字也可以发送到朋友圈</li><li><font color=red>5、最重要的一点：需将/usr/themes/bearsimple/src/Overrides目录中的UploadWidget.php放至/var/Widget目录直接覆盖原有文件，不然朋友圈模式的媒体资源无法正常上传到博客这里，切记！！！</font></li>',
         ),
         array(
             'id'          => 'wechat_service',
@@ -5673,10 +5673,10 @@ function themeConfig($form)
     max-width:100%!important;
 }
 </style>
-        <link href="<?php echo Helper::options()->themeUrl;?>/assets/vendors/toastr.js/toastr.min.css" rel="stylesheet">
-	<script src="<?php echo Helper::options()->themeUrl;?>/assets/vendors/toastr.js/toastr.min.js"></script>
-	<link href="<?php echo Helper::options()->themeUrl;?>/assets/vendors/driver.js/driver.min.css" rel="stylesheet">
-	<script src="<?php echo Helper::options()->themeUrl;?>/assets/vendors/driver.js/driver.min.js.iife.js"></script>
+        <link href="<?php echo Helper::options()->themeUrl;?>/assets/vendor/toastr.js/toastr.min.css" rel="stylesheet">
+	<script src="<?php echo Helper::options()->themeUrl;?>/assets/vendor/toastr.js/toastr.min.js"></script>
+	<link href="<?php echo Helper::options()->themeUrl;?>/assets/vendor/driver.js/driver.min.css" rel="stylesheet">
+	<script src="<?php echo Helper::options()->themeUrl;?>/assets/vendor/driver.js/driver.min.js.iife.js"></script>
         
 <?php
 
@@ -5740,7 +5740,7 @@ function themeConfig($form)
 
        <?php if (!array_key_exists('BsCore', $all['activated'])) : ?>
        
-    <script src="<?php echo Helper::options()->themeUrl; ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo Helper::options()->themeUrl; ?>assets/scripts/jquery.min.js"></script>
     
 
    <script>

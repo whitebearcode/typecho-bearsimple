@@ -1,8 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
 ?>
-<?php $this->need('compoment/head.php');?>
+<?php $this->need('templates/layouts/header.php');?>
 
-<?php $this->need('pages/page.php'); ?>
+<?php $this->need('templates/pages/page.php'); ?>
 
 
 <script>
@@ -24,7 +24,7 @@ function addPostEditBtn(){
    $(function(){addPostView();addPostEditBtn();})
 </script>
  <?php if(Bsoptions('AIService') == true && Bsoptions('AIService_Key') !== ''): ?> 
-<script src="<?php AssetsDir();?>assets/vendors/aiTool/ai.min.js"></script>
+<script src="<?php echo bs_asset_url('assets/vendor/aiTool/ai.min.js'); ?>"></script>
 <?php endif;?>
-<?php $this->need('compoment/sidebar.php'); ?>
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>

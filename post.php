@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
 ?>
-<?php $this->need('compoment/head.php');?>
+<?php $this->need('templates/layouts/header.php');?>
 <?php $this->widget('Widget_Metas_Category_List')->to($categorys);?>
 <?php while ($categorys->next()): ?> <?php if ($this->category ==
 $categorys->slug):?>
@@ -26,11 +26,11 @@ if ((!empty($password) && $password == $category['md5_password']) || $this->user
 
 ?>
 <?php if(Bsoptions('Cate_Encrypt_open') == true && !empty(CategoryEncrypt(categeid($slug))) && !$cookie):?>
-<?php $this->need('modules/lock_article.php'); ?>
+<?php $this->need('modules/access-control/lock-article.php'); ?>
 <?php else:?>
 
 
-<?php $this->need('pages/post.php'); ?>
+<?php $this->need('templates/pages/post.php'); ?>
 
   <?php endif; ?>
 
@@ -56,7 +56,7 @@ function addPostEditBtn(){
 
 
 
-<?php $this->need('compoment/sidebar.php'); ?>
-<?php $this->need('compoment/foot.php'); ?>
+<?php $this->need('templates/layouts/sidebar.php'); ?>
+<?php $this->need('templates/layouts/footer.php'); ?>
 
 
